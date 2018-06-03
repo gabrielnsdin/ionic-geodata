@@ -7,8 +7,21 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <h1>Apenas America com 3 paises</h1>
+
+  <ion-item no-padding>
+    <ion-label stacked>Continentes</ion-label>
+    <ion-select [(ngModel)]="continenteId">
+      <ion-option value="1"><p>Africa</p></ion-option>
+      <ion-option value="2"><p>America</p></ion-option>
+      <ion-option value="3"><p>Asia</p></ion-option>
+      <ion-option value="4"><p>Europa</p></ion-option>
+      <ion-option value="5"><p>Oceania</p></ion-option>
+    </ion-select>
+  </ion-item>
+
+  <br><br>
+  <button ion-button item-end (click) = "goToPage()">Buscar</button>
+
+  <br><br>
 </ion-content>
