@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ListaPaisPage } from '../lista-pais/lista-pais';
 import { Continente } from '../../model/continente';
+import { DatabaseProvider } from '../../providers/database/database';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 @Component({
   selector: 'page-home',
@@ -9,11 +11,12 @@ import { Continente } from '../../model/continente';
 })
 export class HomePage {
 
+  rootPage: typeof HomePage;
   continentes: Continente[];
   continenteId: number;
   continenteSelecionado: Continente;
   
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,dbProvider: DatabaseProvider,splashScreen: SplashScreen) {
     var africa = {id: 1, nome: 'Africa', url: 'africa'}
     var america = {id: 2, nome: 'America', url: 'americas'}
     var asia = {id: 3, nome: 'Asia', url: 'asia'}
@@ -22,6 +25,19 @@ export class HomePage {
 
     this.continentes = [africa, america, asia, europa, oceania]
 
+    dbProvider.createDatabase()
+        .then(() => {
+          this.openHomePage(splashScreen);
+        })
+        .catch(() => {
+          this.openHomePage(splashScreen);
+        });
+
+  }
+
+  private openHomePage(splashScreen: SplashScreen) {
+    splashScreen.hide();
+    this.rootPage = HomePage;
   }
 
   goToPage() {
