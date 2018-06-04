@@ -17,10 +17,8 @@
   <ion-label stacked>Paises</ion-label>
 
   <ion-list inset>
-    <ion-item  no-padding>
-      <h2>Argentina</h2><button ion-button (click)="goToPage(1)">Detalhe</button>
-      <h2>Brasil</h2><button ion-button (click)="goToPage(2)">Detalhe</button>
-      <h2>Uruguai</h2><button ion-button (click)="goToPage(3)">Detalhe</button>
+    <ion-item *ngFor="let pais of view" (click)="goToPage(pais)" no-padding>
+      <h2>{{pais.nome}}</h2>
     </ion-item>
   </ion-list>
   <br><br>

@@ -7,16 +7,12 @@
 </ion-header>
 
 <ion-content padding>
-  <h1>Apenas America com 3 paises</h1>
-
   <ion-item no-padding>
     <ion-label stacked>Continentes</ion-label>
     <ion-select [(ngModel)]="continenteId">
-      <ion-option value="1"><p>Africa</p></ion-option>
-      <ion-option value="2"><p>America</p></ion-option>
-      <ion-option value="3"><p>Asia</p></ion-option>
-      <ion-option value="4"><p>Europa</p></ion-option>
-      <ion-option value="5"><p>Oceania</p></ion-option>
+      <ion-option *ngFor="let continente of continentes" value="{{continente.id}}">
+        <p>{{continente.nome}}</p>
+      </ion-option>
     </ion-select>
   </ion-item>
 

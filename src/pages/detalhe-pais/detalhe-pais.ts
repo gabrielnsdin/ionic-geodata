@@ -15,27 +15,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DetalhePaisPage {
 
-  data: any;
-  paisNome: string;
-  paisContinente: string;
+  pais: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.data = navParams.get('data');
-    
-    if(this.data == 1){
-      this.paisNome = 'Argentina';
-      this.paisContinente = 'America';
-    }else if(this.data == 2){
-      this.paisNome = 'Brasil';
-      this.paisContinente = 'America';
-    }else if(this.data == 3){
-      this.paisNome = 'Uruguai';
-      this.paisContinente = 'America';
-    }
+    this.pais = navParams.get('data');  
+    console.log(this.pais); 
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DetalhePaisPage');
+    console.log('ionViewDidLoad DetalhesPage');
   }
 
+  voltar() {
+    this.navCtrl.pop();
+ }
 }
