@@ -12,7 +12,7 @@ export class HomePage {
   continentes: Continente[];
   continenteId: number;
   continenteSelecionado: Continente;
-
+  
   constructor(public navCtrl: NavController) {
     var africa = {id: 1, nome: 'Africa', url: 'africa'}
     var america = {id: 2, nome: 'America', url: 'americas'}
@@ -21,6 +21,7 @@ export class HomePage {
     var oceania = {id: 5, nome: 'Oceania', url: 'oceania'}
 
     this.continentes = [africa, america, asia, europa, oceania]
+
   }
 
   goToPage() {
@@ -30,5 +31,4 @@ export class HomePage {
       continentes : this.continentes
     });
   }
-
 }

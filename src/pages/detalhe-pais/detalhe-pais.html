@@ -15,7 +15,22 @@
 
 <ion-content padding>
   <ion-label stacked>Nome</ion-label>
-  {{pais.nome}}
+  {{pais.translations.br}}
   <ion-label stacked>Continente</ion-label>
-  {{pais.continente.nome}}
+  {{pais.region}}
+  <ion-label stacked>Populacao</ion-label>
+  {{pais.population | number}}
+  <ion-label stacked>Capital</ion-label>
+  {{pais.capital}}
+  <ion-label stacked>Moedas</ion-label>
+  <ion-item *ngFor="let currency of pais.currencies">
+    Nome: {{currency.name}}<br> 
+    Codigo: {{currency.code}}<br>
+    Simbolo: {{currency.symbol}}<br><br>
+  </ion-item>
+  <ion-label stacked>Bandeira</ion-label>
+  <ion-img width="150" height="100" src="{{pais.flag}}"></ion-img>
+
+  <br><br>
+  <button ion-button item-end (click) = "voltar()">Voltar</button>
 </ion-content>

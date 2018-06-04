@@ -17,8 +17,8 @@
   <ion-label stacked>Paises</ion-label>
 
   <ion-list inset>
-    <ion-item *ngFor="let pais of view" (click)="goToPage(pais)" no-padding>
-      <h2>{{pais.nome}}</h2>
+    <ion-item *ngFor="let pais of paisesRest" (click)="goToPage(pais)" no-padding>
+      <h2>{{pais.translations.br}}</h2>
     </ion-item>
   </ion-list>
   <br><br>

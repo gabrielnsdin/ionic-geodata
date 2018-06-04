@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DetalhePaisPage } from '../detalhe-pais/detalhe-pais';
 import { Continente } from '../../model/continente';
 import { Pais } from '../../model/pais';
+import { RestProvider } from '../../providers/rest/rest';
 
 /**
  * Generated class for the ListaPaisPage page.
@@ -15,32 +16,24 @@ import { Pais } from '../../model/pais';
 @Component({
   selector: 'page-lista-pais',
   templateUrl: 'lista-pais.html',
+  providers: [
+    RestProvider
+  ]
 })
 export class ListaPaisPage {
 
   teste: Continente;
   continentes: Continente[];
   paises: Pais[];
-  view: Pais[];
   paisesRest: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
     this.teste = navParams.get('data');
     this.continentes = navParams.get('continentes');
-    
-    var brasil = {id: 1,nome:'Brasil', idioma: 'Português', continente : this.continentes[1], populacao: 207660929}
-    var argentina = {id: 2,nome:'Argentina', idioma: 'Castelhano', continente : this.continentes[1], populacao: 43131966}
-    var uruguai = {id: 3,nome:'Uruguai', idioma: 'Castelhano', continente : this.continentes[1], populacao: 3415866}
-    
-    if(this.teste.nome = 'America'){
-      this.view = [brasil,argentina,uruguai];
-    }else{
-      this.view = []
-    }
   }
 
   ionViewDidLoad() {
-
+    this.getPaises();
   }
 
   goToPage(pais) {
@@ -52,5 +45,12 @@ export class ListaPaisPage {
   voltar() {
     this.navCtrl.pop();
  }
+  
+  getPaises() {
+    this.restProvider.getPaises(this.teste.url)
+    .then(data => {
+      this.paisesRest = data;
+    });
+  }
 
 }
